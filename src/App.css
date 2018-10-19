@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* border: 20px; */
 }
 
 .App-logo {
@@ -21,6 +22,38 @@
 .App-link {
   color: #61dafb;
 }
+
+.btn-primary {
+  background: #3BBBFF !important; 
+  color: none !important;
+
+}
+
+.blue {
+  color: #3BBBFF; 
+}
+
+.dark-blue {
+  color: #2F4A62; 
+}
+
+.footer {
+  background-color: #2F4A62;
+}
+
+.mt-4 {
+  margin-top: 0rem !important;
+}
+
+.dropdown {
+  border: none !important;
+  border-bottom: 1px solid #ced4da !important;
+  line-height: 1.5 !important;
+  margin-left: 2.5rem !important;
+  width: calc(100% - 2.5rem);
+}
+
+
 
 @keyframes App-logo-spin {
   from {

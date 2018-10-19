@@ -6,6 +6,11 @@ import reducer from '../src/rp/reducer/reducer'
 import mySaga from '../src/rp/sagas'
 import { Provider } from 'react-redux'
 import './index.css';
+
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css'; 
+import 'mdbreact/dist/css/mdb.css';
+
 import App from './App';
 
 const sagaMiddleware = createSagaMiddleware()
