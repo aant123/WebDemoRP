@@ -10,6 +10,7 @@ import './index.css';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
+import { BrowserRouter } from 'react-router-dom'
 
 import App from './App';
 
@@ -22,7 +23,9 @@ const store = createStore(
 sagaMiddleware.run(mySaga)
 ReactDOM.render(
     <Provider store={store}>
+    <BrowserRouter>
         <App />
+    </BrowserRouter>
     </Provider>
 , document.getElementById('root'));
 

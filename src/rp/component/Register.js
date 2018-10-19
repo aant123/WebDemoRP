@@ -9,18 +9,13 @@ import { Input, Button, Container, Col, Footer, Fa } from "mdbreact";
 class Register extends Component {
   clickSubmit = () => {
     // window.location = '/ListIdp'
-    // console.log('window.location',window.location);
+    console.log('window.location',window.location);
   };
   render() {
     return (
       <div>
-        <Header/>
         <Container>
           <Col style={{ marginTop: "30px", marginBottom: "50px" }}>
-            <p className="h2 text-left dark-blue">Fax Claim Service</p>
-            <p className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
-              ลงทะเบียนเข้าใช้งาน
-            </p>
             <form style={{ marginTop: "50px" }}>
               <div className="grey-text">
                 <Input
@@ -59,7 +54,7 @@ class Register extends Component {
                 </div>
                 
               </div>
-              <Button block color="primary">
+              <Button block color="primary" href='/' onClick={this.clickSubmit}>
                 ดำเนินการต่อ
               </Button>
             </form>

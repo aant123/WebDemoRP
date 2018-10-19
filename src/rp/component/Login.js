@@ -7,32 +7,12 @@ import logo from "../../icon/BFE-Logo.png"
 import { Input, Button, Container, Col, Footer } from "mdbreact";
 
 class Login extends Component {
-  clickSubmit = () => {
-    // window.location = '/ListIdp'
-    // console.log('window.location',window.location);
-  };
   render() {
     return (
       <div>
-        <Footer className="footer">
-          <Container>
-            <img src={logo} alt='logo' className="mx-auto d-block" 
-            style={{ paddingTop: '10px', paddingBottom: '10px'}}
-            />
-          </Container>
-        </Footer>
         <Container>
           <Col style={{ marginTop: "30px", marginBottom: "50px" }}>
-            <p
-              className="h2 text-left dark-blue"
-              style={{ marginTop: "10px", marginBottom: "10px" }}
-            >
-              Fax Claim Service
-            </p>
-            <p className="h5 text-left grey-text">
-              ผู้ใช้งานใหม่ หรือยังไม่เคยลงทะเบียน online
-            </p>
-            <Button block color="primary">
+            <Button block color="primary" href='/register'>
               Register
             </Button>
           </Col>
@@ -58,7 +38,7 @@ class Login extends Component {
                   validate
                 />
               </div>
-              <Button block color="primary">
+              <Button block color="primary" href='/selectIdp' onClick={this.clickSubmit}>
                 Login
               </Button>
             </form>
