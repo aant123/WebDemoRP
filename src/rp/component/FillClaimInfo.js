@@ -39,7 +39,7 @@ class FillClaimInfo extends Component {
                   </select>
                 </div>
                 <div className="md-form form-group">
-                  <Fa icon="plus" className="prefix" />
+                  <Fa icon="h-square" className="prefix" />
                   <div style={{position:"absolute", right:'1rem', bottom:'1rem'}}>
                     <Fa icon="sort-down" size='lg' />
                   </div>
