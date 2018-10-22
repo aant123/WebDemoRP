@@ -54,6 +54,19 @@ br {
   color: #fff;
 }
 
+.card-label {
+  color: #466681;
+  font-size: .9rem;
+  font-weight: 400;
+}
+
+.card-detail {
+  color: #1E9DE0;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
