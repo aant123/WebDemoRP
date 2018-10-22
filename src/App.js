@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {PageHeader} from 'react-bootstrap'
+import { PageHeader } from 'react-bootstrap'
 import ListIdpContrainer from '../src/rp/contrainer/ListIdpContrainer'
 import Login from './rp/component/Login'
 import {Route , Switch} from 'react-router-dom'
@@ -15,7 +15,7 @@ class App extends Component {
       case '/':
           return 'ผู้ใช้งานใหม่ หรือยังไม่เคยลงทะเบียน online'
       case '/selectIdp':
-          return 'ลงทะเบียนเข้าใช้งาน>ยืนยันตัวตน'
+          return 'เลือกผู้ให้บริการยืนยันตัวตน'
       case '/register':
           return 'ลงทะเบียนผู้ใช้งาน'
       default:
@@ -23,22 +23,23 @@ class App extends Component {
   }
   }
   render() {
-    const subTittle = this.renderSubTittle()
+    const subtitle = this.renderSubTittle()
     return (
       <div>
       <Header/>
-      <Container>
-          <Col style={{ marginTop: "30px", marginBottom: "50px" }}>
+      {/* <Container>
+          <Col style={{ marginTop: "30px", marginBottom: "30px" }}>
             <p className="h2 text-left dark-blue">Fax Claim Service</p>
             <p className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
-              {subTittle}
+              {subtitle}
             </p>
           </Col>
-      </Container>
+      </Container> */}
+      {console.log(subtitle)}
       <Switch>
-        <Route exact path='/' component={Login} />
-        <Route path='/selectIdp' component={IdpList} />
-        <Route path='/register' component={Register} />
+        <Route exact path='/' component={() => <Login subtitle={subtitle}/>} />
+        <Route path='/selectIdp' component={() => <IdpList subtitle={subtitle} />} />
+        <Route path='/register' component={() => <Register subtitle={subtitle} />} />
       </Switch>
     </div>
     );
