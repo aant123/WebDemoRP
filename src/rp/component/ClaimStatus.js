@@ -15,12 +15,11 @@ class ClaimStatus extends Component {
             รายการคำขอเรียกร้องค่ารักษาผ่านโรงพยาบาล
           </p>
         </Col>
-        <Col style={{ paddingBottom: "20px" }}>
         <Card
           style={{
             marginLeft: "10px",
             marginRight: "10px",
-            marginBottom: "20px",
+            marginBottom: "30px",
             background: "#F0F0F5"
           }}
         >
@@ -69,7 +68,6 @@ class ClaimStatus extends Component {
             </Col>
           </CardBody>
         </Card>
-        </Col>
       </Container>
     );
   }
