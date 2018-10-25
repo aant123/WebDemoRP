@@ -1,19 +1,19 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom'
 
 import { Input, Button, Container, Col, Fa } from "mdbreact";
 
 class Register extends Component {
   clickSubmit = () => {
-    // window.location = '/ListIdp'
-    console.log('window.location', window.location);
+    this.props.history.push('/');
   };
   render() {
     return (
       <Container>
         <Col style={{ paddingBottom: "20px" }}>
-          <p className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
+          <label className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
             ลงทะเบียนผู้ใช้งาน
-          </p>
+          </label>
         </Col>
         <Col style={{ paddingBottom: "30px" }}>
           <form>
@@ -54,7 +54,7 @@ class Register extends Component {
               </div>
 
             </div>
-            <Button block color="primary" href='/' onClick={this.clickSubmit}>
+            <Button block color="primary" onClick={this.clickSubmit}>
               ดำเนินการต่อ
               </Button>
           </form>
@@ -64,4 +64,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default withRouter(Register);

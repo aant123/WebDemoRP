@@ -8,12 +8,13 @@ class ClaimStatus extends Component {
     // console.log('window.location',window.location);
   };
   render() {
+    const { insuranceNo, hospital } = this.props
     return (
       <Container>
         <Col style={{ paddingBottom: "20px" }}>
-          <p className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
+          <label className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
             รายการคำขอเรียกร้องค่ารักษาผ่านโรงพยาบาล
-          </p>
+          </label>
         </Col>
         <Card
           style={{
@@ -32,7 +33,7 @@ class ClaimStatus extends Component {
                 </CardTitle>
                 <CardTitle className="card-label">โรงพยาบาล</CardTitle>
                 <CardTitle sub className="card-detail">
-                  โรงพยาบาลดุสิต
+                  {hospital}
                 </CardTitle>
                 <CardTitle className="card-label">วันที่เข้ารักษา</CardTitle>
                 <CardTitle sub className="card-detail">
@@ -42,7 +43,7 @@ class ClaimStatus extends Component {
               <Col>
                 <CardTitle className="card-label">กรมธรรม์</CardTitle>
                 <CardTitle sub className="card-detail">
-                  000000J789-456
+                  {insuranceNo}
                 </CardTitle>
                 <CardTitle className="card-label">ค่าใช้จ่าย</CardTitle>
                 <CardTitle sub className="card-detail">

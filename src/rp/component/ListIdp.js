@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import uuidv4 from 'uuid-v4'
 import * as moment from 'moment';
 import 'moment/min/locales.min';
-// import dateFormat from 'dateformat'
-// import {ListGroup, ListGroupItem} from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
+
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
@@ -37,29 +37,39 @@ class ListIdp extends Component {
       const currentDate = moment().format('LLL');
       this.props.selectIdp(this.state.selectIdp, booleanshowModalReqIdp,requestId,currentDate)
     }
+    this.props.history.push('#');
+
   }
   render() {
     const { idpList } = this.props
     return (
       <Container>
-        <Col style={{ marginTop: "20px", marginBottom: "20px" }}>
-        <p className="h5 text-left grey-text" style={{ fontWeight: 'bold' }}>เลือกผู้ให้บริการยืนยันตัวตน</p>
+        <Col>
+          <label className="h6 text-left grey-text">
+            ลงทะเบียนเข้าใช้งาน > ยืนยันตัวตน
+          </label>
+          <label className="h5 text-left grey-text" 
+            style={{ marginTop: "30px" }}>
+            เลือกผู้ให้บริการยืนยันตัวตน
+          </label>
+        </Col>
+        <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           {idpList.length > 0 ? idpList.map((data, index) => {
             return (
               <ListGroup role="tablist">
                   <ListGroupItem onClick={() => this.selectIdp(data, index)} className='idpList' hover>
                   <Row>
-                    <Col className='text-center'>
+                    <Col className='text-center' xs="4">
                       <img
                         src={this.state.icons[index]}
                         alt="logo"
                         height='50px'
                       />
                     </Col>
-                    <Col>
-                      <p style={{ transform:'translateY(50%)' }}>
-                        {data.node_id}
-                      </p>
+                    <Col xs="8">
+                      <label style={{ transform:'translateY(50%)' }}>
+                        {data.node_name}
+                      </label>
                     </Col>
                     </Row>
                   </ListGroupItem>
@@ -70,7 +80,9 @@ class ListIdp extends Component {
 
         </Col>
         <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
-          <Button block href="#" color="primary" onClick={this.clickBtnNextStep}>
+          <Button block color="primary" 
+          onClick={this.clickBtnNextStep}
+          >
             ดำเนินการต่อ
           </Button>
         </Col>
@@ -80,4 +92,4 @@ class ListIdp extends Component {
   }
 }
 
-export default ListIdp
+export default withRouter(ListIdp);

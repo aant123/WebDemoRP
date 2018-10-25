@@ -1,19 +1,33 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom'
 
 import { Input, Button, Container, Col, Fa } from "mdbreact";
 
 class FillClaimInfo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      insuranceNo: 0,
+      hospital: ''
+    }
+  }
   clickSubmit = () => {
-    // window.location = '/ListIdp'
-    // console.log('window.location',window.location);
+    this.props.getInfo(this.state.insuranceNo, this.state.hospital);
+    this.props.history.push('/claimStatus');
   };
+  insuranceSelected = (event) => {
+    this.setState({ insuranceNo: event.target.value })
+  }
+  hospitalSelected = (event) => {
+    this.setState({ hospital: event.target.value })
+  }
   render() {
     return (
       <Container>
         <Col style={{ paddingBottom: "20px" }}>
-          <p className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
+          <label className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
             ข้อมูลของการรักษาพยาบาลในครั้งนี้
-          </p>
+          </label>
         </Col>
         <Col style={{ paddingBottom: "30px" }}>
           <form>
@@ -25,7 +39,7 @@ class FillClaimInfo extends Component {
                 </div>
                 <select
                   className="form-control validate dropdown grey-text"
-                  required
+                  required onChange={this.insuranceSelected}
                 >
                   <option value="">เลขที่กรมธรรม์</option>
                   <option value="1">One</option>
@@ -39,10 +53,10 @@ class FillClaimInfo extends Component {
                   <Fa icon="sort-down" size='lg' />
                 </div>
                 <select
-                  className="form-control validate dropdown grey-text"
-                  required
+                  className="form-control validate dropdown"
+                  required onChange={this.hospitalSelected}
                 >
-                  <option value="">โรงพยาบาล</option>
+                  <option className='grey-text' value="">โรงพยาบาล</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
@@ -57,7 +71,7 @@ class FillClaimInfo extends Component {
                 className="dropdown grey-text"
               />
             </div>
-            <Button block color="primary">
+            <Button block color="primary" onClick={this.clickSubmit}>
               ดำเนินการต่อ
               </Button>
           </form>
@@ -67,4 +81,4 @@ class FillClaimInfo extends Component {
   }
 }
 
-export default FillClaimInfo;
+export default withRouter(FillClaimInfo);
