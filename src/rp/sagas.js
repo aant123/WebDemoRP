@@ -1,5 +1,5 @@
 import { call, takeEvery, put} from 'redux-saga/effects'
-import { getData } from '../rp/service'
+import { getData, postRequest } from '../rp/service'
 
 function* getListIdp(){
     try {
@@ -9,11 +9,22 @@ function* getListIdp(){
         yield put({type: "GET_LIST_IDP_FAILED", message: e.message});
      }
   }
-  function* sendReqToIdp(){
+  function* sendReqToIdp(action){
+    console.log('action.idpDetail.requestId',action.idpDetail.requestId)
     try {
       yield put({type:'SHOW_LOADIND'})
-      yield put({type: 'REQUEST_TO_IDP_SUCCEEDED'});
+      const req = yield call(postRequest,{                                            
+        node_id: 1,
+        mode : 1 ,
+        namespace : 'citizen_id',
+        identifier : 1234567890123,
+        request_timeout: 86400,
+        idp_id_list: ['idp1'],
+        reference_id:action.idpDetail.requestId
+      })
+      yield put({type: 'CREATE_REQUEST_SUCCEEDED'},req);
      } catch (e) {
+      yield put({type: 'CREATE_REQUEST_FAILD',message: e.message});
      }
   }
 function* mySaga() {

@@ -3,13 +3,15 @@ import { Container, Modal, Fa, ModalBody, Row, Col } from "mdbreact";
 
 class ModalReqIdp extends Component {
   componentWillMount() {
-    this.props.reqToIdp();
+    let data = this.props.objIdpAtSelect
+     data = {...data,requestId:this.props.requestId}
+    this.props.reqToIdp(data);
   }
   clickSucess = () => {
     this.props.sucessModal(true);
   };
   render() {
-    const { showLoading } = this.props;
+    const { showLoading, requestId, currentDate } = this.props;
     const textDetailSucess =
       "ระบบได้รับการยืนยันและข้อมูลจาก \n “ตัวตน Idp แล้ว” ";
     const textDetailWaiting =
@@ -50,13 +52,13 @@ class ModalReqIdp extends Component {
                 <label className="card-label">Reference ID</label>
               </Row>
               <Row>
-                <label className="card-detail">ceeffbb6-60ee-4186-a3ec-102e2576c082</label>
+                <label className="card-detail">{requestId}</label>
               </Row>
               <Row>
                 <label className="card-label">Request Time</label>
               </Row>
               <Row>
-                <label className="card-detail">15 ตุลาคม 2561 14:00</label>
+                <label className="card-detail">{currentDate}</label>
               </Row>
               {modalDetail}
             </Col>

@@ -7,8 +7,10 @@
     "babel-loader": "^8.0.4",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
+    "dateformat": "^3.0.3",
     "express": "^4.16.4",
     "mdbreact": "^4.8.1",
+    "moment": "^2.22.2",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.2",
@@ -19,7 +21,8 @@
     "redux": "^4.0.1",
     "redux-saga": "^0.16.2",
     "socket.io": "^2.1.1",
-    "socket.io-client": "^2.1.1"
+    "socket.io-client": "^2.1.1",
+    "uuid-v4": "^0.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

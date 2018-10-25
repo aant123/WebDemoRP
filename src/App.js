@@ -19,7 +19,7 @@ class App extends Component {
       case '/':
           return 'ผู้ใช้งานใหม่ หรือยังไม่เคยลงทะเบียน online'
       case '/selectIdp':
-          return 'เลือกผู้ให้บริการยืนยันตัวตน'
+          return 'ลงทะเบียนเข้าใช้งาน>ยืนยันตัวตน'
       case '/register':
           return 'ลงทะเบียนผู้ใช้งาน'
       default:
@@ -32,10 +32,14 @@ class App extends Component {
       <div>
       <Header/>
       <Container>
-          <Col style={{ paddingTop: "30px" }}>
+          <Col style={{ marginTop: "30px", marginBottom: "30px" }}>
             <p className="h2 text-left dark-blue">Fax Claim Service</p>
+            <p className="h5 text-left grey-text" >
+              {subtitle}
+            </p>
           </Col>
       </Container>
+      {console.log(subtitle)}
       <Switch>
         <Route exact path='/' component={Login} />
         <Route path='/selectIdp' component={IdpList} />
