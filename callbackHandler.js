@@ -4,28 +4,28 @@ const http = require('http')
 const socketIo = require('socket.io')
 const cors = require('cors')
 const axios = require('axios')
-
-const port = process.env.PORT || 5010;
+const port = process.env.PORT || 5001;
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
 let socket;
-
 app.use(cors());
-io.on('connection',_socket =>{
-    socket = _socket
-    console.log('connect Port 5010 in callbackHandler')
-})
+io.on("connection", _socket => {
+  console.log("New client connected")
+  socket = _socket
+  socket.on("disconnect", () => console.log("Client disconnected"));
+});
+
 app.use(bodyParser.json({ limit: '2mb' }));
 app.post('/rp/request/:referenceId', async (req, res) => {
   try {
     const callbackData = req.body;
-    console.log('Received request callback from NDID API:', JSON.stringify(callbackData, null, 2));
+    // console.log('Received request callback from NDID API:', JSON.stringify(callbackData, null, 2));
     callbackEvent(callbackData); 
     res.status(204).end();
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).end();
   }
 });
@@ -33,21 +33,23 @@ app.post('/rp/request/:referenceId', async (req, res) => {
 app.post('/rp/request/close', async (req, res) => {
   try {
     const callbackData = req.body;
-    console.log('Received close request callback from NDID API:', JSON.stringify(callbackData, null, 2));
+    // console.log('Received close request callback from NDID API:', JSON.stringify(callbackData, null, 2));
     callbackEvent(callbackData);
     res.status(204).end();
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).end();
   }
 });
 
 function callbackEvent(data) {
+  console.log('hello',data)
     if (data.type === 'create_request_result') {
-        console.log('Create request result', data);   
+        // console.log('Create request result', data);   
     } else if (data.type === 'request_status') {
               if (data.mode === 1) {
                 if (data.status === 'completed') {
+                  console.log('complete')
                     socket.emit('callBackSucess',data)
                 } else if (
                   data.status === 'rejected' &&
@@ -58,13 +60,13 @@ function callbackEvent(data) {
               }
     } else if (data.type === 'close_request_result') {
               if (data.success) {
-                console.log('Successfully close request ID:', data.request_id);
+                // console.log('Successfully close request ID:', data.request_id);
               } else {
-                console.error('Error closeing request ID:', data.request_id);
+                // console.error('Error closeing request ID:', data.request_id);
               }
     } else if (data.type === 'error') {
     } else {
-              console.error('Unknown callback type', data);
+              // console.error('Unknown callback type', data);
               return;
     }
     if (socket) {
@@ -74,9 +76,9 @@ function callbackEvent(data) {
 
 async function closeRequest(requestId) {
     const reference_id = (Date.now() % 100000).toString();
-    const req = await axios.post('http://localhost:5010/rp/request/close',{
+    const req = await axios.post('http://localhost:5001/rp/request/close',{
         reference_id,
-        callback_url: 'http://localhost:5010/rp/request/close',
+        callback_url: 'http://localhost:5001/rp/request/close',
         request_id: requestId,
       })
       return req;

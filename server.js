@@ -1,9 +1,3 @@
-// import {express} from 'express'
-// import http from 'http'
-// import bodyParser from 'body-parser';
-// import socketIo from 'socket.io'
-// import cors from 'cors'
-// import axios from 'axios'
 const bodyParser = require('body-parser')
 const express = require('express')
 const http = require('http')
@@ -37,10 +31,11 @@ const getIdpList = async socket => {
 
 // socket.on('CreateRequest', async data => {
   app.post('/createRequest', async (req, res) => {
-  console.log('req',req.body)
     const {
+      node_id,
       mode,
       namespace,
+      min_idp,
       identifier,
       request_timeout,
       idp_id_list,
@@ -49,22 +44,24 @@ const getIdpList = async socket => {
 
     try {
       const request = await axios.post(`http://localhost:8200/rp/requests/${namespace}/${identifier}`,{
+        node_id,
         mode,
+        min_idp,
         namespace,
         identifier,
         reference_id,
         idp_id_list: idp_id_list || [],
-        callback_url: `http://localhost:5010/rp/request/${reference_id}`,
+        callback_url: `http://docker.for.mac.localhost:5001/rp/request/${reference_id}`,
         data_request_list: [],
         request_message: '',
         min_ial: 1.1,
         min_aal: 1,
         request_timeout: request_timeout ? parseInt(request_timeout) : 86400,
       });
-      console.log('request',request)
-      request.status(200).json({requestId: request.reference_id});
+      req.status(200).json({requestId: request.data.reference_id});
     } catch (error) {
-      console.log('error')
+      // res.status(500).json(error.error ? error.error.message : error);
     }
   });
+
 server.listen(port, () => console.log(`Listening on port ${port}`));

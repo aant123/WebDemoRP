@@ -13,16 +13,17 @@ function* getListIdp(){
     console.log('action.idpDetail.requestId',action.idpDetail.requestId)
     try {
       yield put({type:'SHOW_LOADIND'})
-      const req = yield call(postRequest,{                                            
-        node_id: 1,
+      yield call(postRequest,{                                            
+        node_id: '1',
         mode : 1 ,
         namespace : 'citizen_id',
-        identifier : 1234567890123,
+        min_idp : 1,
+        identifier : 1234567890129,
         request_timeout: 86400,
         idp_id_list: ['idp1'],
         reference_id:action.idpDetail.requestId
       })
-      yield put({type: 'CREATE_REQUEST_SUCCEEDED'},req);
+      yield put({type: 'CREATE_REQUEST_SUCCEEDED'});
      } catch (e) {
       yield put({type: 'CREATE_REQUEST_FAILD',message: e.message});
      }
@@ -30,6 +31,6 @@ function* getListIdp(){
 function* mySaga() {
     yield takeEvery("GET_LIST_IDP_REQUESTED", getListIdp);
     yield takeEvery("REQUEST_TO_IDP", sendReqToIdp);
-  }
+}
 
 export default mySaga;
