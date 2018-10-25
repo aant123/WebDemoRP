@@ -5,7 +5,9 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 import { Container, ListGroup, ListGroupItem, Button, Col, Row } from 'mdbreact'
 
-import logo from "../../icon/BFE-Logo.png";
+import icon1 from "../../icon/Layer 1.png";
+import icon2 from "../../icon/Group 22.png";
+import icon3 from "../../icon/Group 23.png";
 
 class ListIdp extends Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class ListIdp extends Component {
     this.state = {
       selectIdp: null,
       showModalReqIdp: false,
+      icons: [icon1, icon2, icon3]
     }
   }
   componentWillMount() {
@@ -32,8 +35,7 @@ class ListIdp extends Component {
     const { idpList } = this.props
     return (
       <Container>
-        <Col style={{ marginTop: "30px", marginBottom: "20px" }}>
-          <label className="h2 text-left dark-blue">Fax Claim Service</label>
+        <Col>
           <label className="h6 text-left grey-text">
             ลงทะเบียนเข้าใช้งาน > ยืนยันตัวตน
           </label>
@@ -42,33 +44,35 @@ class ListIdp extends Component {
             เลือกผู้ให้บริการยืนยันตัวตน
           </label>
         </Col>
-        <Col style={{ marginTop: "20px", marginBottom: "20px" }}>
+        <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           {idpList.length > 0 ? idpList.map((data, index) => {
             const path = '/citizen_id/1234567'
             this.checkSelect = Array(idpList.length)
             return (
               <ListGroup role="tablist">
                   <ListGroupItem onClick={() => this.selectIdp(data, index)} className='idpList' hover>
-                  <Row style={{ paddingLeft: '40px' }}>
-                    <Col>
+                  <Row>
+                    <Col className='text-center'>
                       <img
-                        src={logo}
+                        src={this.state.icons[index]}
                         alt="logo"
                         height='50px'
                       />
                     </Col>
                     <Col>
-                      <p style={{ 
-                        // color:'#3BBBFF',
-                       transform:'translateY(50%)' }}>{data.node_id}</p>
+                      <p style={{ transform:'translateY(50%)' }}>
+                        {data.node_id}
+                      </p>
                     </Col>
                     </Row>
                   </ListGroupItem>
                   <br/>
               </ListGroup>
             )
-          }) : null}
+          }) : null }
 
+        </Col>
+        <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <Button block href="#" color="primary" onClick={this.clickBtnNextStep}>
             ดำเนินการต่อ
           </Button>

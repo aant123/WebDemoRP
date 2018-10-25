@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-  CardTitle,
-  Fa,
-} from "mdbreact";
+import { Container, Row, Col, Card, CardBody, CardTitle, Fa } from "mdbreact";
 
 class ClaimStatus extends Component {
   clickSubmit = () => {
@@ -18,12 +10,12 @@ class ClaimStatus extends Component {
   render() {
     return (
       <Container>
-        <Col style={{ marginTop: "30px", marginBottom: "30px" }}>
-          <p className="h2 text-left dark-blue">Fax Claim Service</p>
+        <Col style={{ paddingBottom: "20px" }}>
           <p className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
             รายการคำขอเรียกร้องค่ารักษาผ่านโรงพยาบาล
-            </p>
+          </p>
         </Col>
+        <Col style={{ paddingBottom: "20px" }}>
         <Card
           style={{
             marginLeft: "10px",
@@ -33,50 +25,51 @@ class ClaimStatus extends Component {
           }}
         >
           <CardBody>
-            <Row style={{ marginTop: '10px', marginBottom: '10px' }}>
+            <Row style={{ paddingTop: "10px", paddingBottom: "10px" }}>
               <Col>
-                <CardTitle className="card-label">
-                  Fax Claim No.
-                  </CardTitle>
+                <CardTitle className="card-label">Fax Claim No.</CardTitle>
                 <CardTitle sub className="card-detail">
                   65-2018-0001415
-                  </CardTitle>
-                <CardTitle className="card-label">
-                  โรงพยาบาล
-                  </CardTitle>
+                </CardTitle>
+                <CardTitle className="card-label">โรงพยาบาล</CardTitle>
                 <CardTitle sub className="card-detail">
                   โรงพยาบาลดุสิต
-                  </CardTitle>
-                <CardTitle className="card-label">
-                  วันที่เข้ารักษา
-                  </CardTitle>
+                </CardTitle>
+                <CardTitle className="card-label">วันที่เข้ารักษา</CardTitle>
                 <CardTitle sub className="card-detail">
                   12 ตุลาคม 2561
-                  </CardTitle>
+                </CardTitle>
               </Col>
               <Col>
                 <CardTitle className="card-label">กรมธรรม์</CardTitle>
                 <CardTitle sub className="card-detail">
                   000000J789-456
-                  </CardTitle>
+                </CardTitle>
                 <CardTitle className="card-label">ค่าใช้จ่าย</CardTitle>
                 <CardTitle sub className="card-detail">
                   2,500 บาท
-                  </CardTitle>
+                </CardTitle>
               </Col>
             </Row>
             <CardTitle className="card-label">สถานะ</CardTitle>
-            <CardTitle sub className="card-detail" style={{ color: '#FF6E00', fontWeight: 'bold' }}>
+            <CardTitle
+              sub
+              className="card-detail"
+              style={{ color: "#FF6E00", fontWeight: "bold" }}
+            >
               กำลังตรวจสอบ
-              </CardTitle>
-            <Col className='text-center'>
-              <Fa icon='check-circle' size='5x'
-                style={{ color: '#28B41E' }}
+            </CardTitle>
+            <Col className="text-center">
+              <Fa
+                icon="check-circle"
+                size="5x"
+                style={{ color: "#28B41E" }}
                 onClick={this.clickSucess}
               />
             </Col>
           </CardBody>
         </Card>
+        </Col>
       </Container>
     );
   }
