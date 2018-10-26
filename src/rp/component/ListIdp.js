@@ -23,6 +23,7 @@ class ListIdp extends Component {
     }
   }
   componentWillMount() {
+    console.log('dfdfs',this.props)
     this.props.getdata()
   }
   selectIdp = (objIdp, index) => {
@@ -68,7 +69,7 @@ class ListIdp extends Component {
                     </Col>
                     <Col xs="8">
                       <label style={{ transform:'translateY(50%)' }}>
-                        {data.node_name}
+                        {data.node_id}
                       </label>
                     </Col>
                     </Row>

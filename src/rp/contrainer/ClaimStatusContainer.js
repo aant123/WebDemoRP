@@ -4,9 +4,14 @@ import ClaimStatus from '../component/ClaimStatus';
 
 class ClaimStatusContainer extends Component {
   render() {
-    const { insuranceNo, hospital } = this.props
+    const { insuranceNo, hospital, currentDateInClaim, isSuccess } = this.props
     return (
-      <ClaimStatus insuranceNo={insuranceNo} hospital={hospital}/>
+      <ClaimStatus
+        insuranceNo={insuranceNo}
+        hospital={hospital}
+        currentDateInClaim = {currentDateInClaim}
+        isSuccess = {isSuccess}
+      />
     )
   }
 }
@@ -14,7 +19,8 @@ class ClaimStatusContainer extends Component {
 const mapStateToProps = state => ({
   insuranceNo: state.insuranceNo,
   hospital: state.hospital,
-  currentDate: state.currentDate
+  currentDateInClaim: state.currentDateInClaim,
+  isSuccess: state.isSuccess
 })
 
 export default connect(mapStateToProps)(ClaimStatusContainer);

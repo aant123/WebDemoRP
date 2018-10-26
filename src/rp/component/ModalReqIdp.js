@@ -8,6 +8,7 @@ class ModalReqIdp extends Component {
     this.props.reqToIdp(data);
   }
   clickSucess = () => {
+    this.props.history.push('/fillUserInfo');
     this.props.sucessModal(true);
   };
   render() {
@@ -72,4 +73,4 @@ class ModalReqIdp extends Component {
   }
 }
 
-export default ModalReqIdp;
+export default withRouter(ModalReqIdp);

@@ -1,10 +1,11 @@
+const config = require('../config')
 const bodyParser = require('body-parser')
 const express = require('express')
 const http = require('http')
 const socketIo = require('socket.io')
 const cors = require('cors')
 const axios = require('axios')
-const port = process.env.PORT || 5001;
+// const port = process.env.PORT || 5001;
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
@@ -76,16 +77,16 @@ function callbackEvent(data) {
 
 async function closeRequest(requestId) {
     const reference_id = (Date.now() % 100000).toString();
-    const req = await axios.post('http://localhost:5001/rp/request/close',{
+    const req = await axios.post(`http://${config.ndidApiCallBackIpClient}:${config.ndidApiCallBackPort}/rp/request/close`,{
         reference_id,
-        callback_url: 'http://localhost:5001/rp/request/close',
+        callback_url: `http://${config.ndidApiCallBackIpClient}:${config.ndidApiCallBackPort}/rp/request/close`,
         request_id: requestId,
       })
       return req;
   }
 
-server.listen(port, () =>
+server.listen(config.ndidApiCallBackPort, () =>
   console.log(
-    `Listening to NDID API callbacks on port ${port}`
+    `Listening to NDID API callbacks on port ${config.ndidApiCallBackPort}`
   )
 );

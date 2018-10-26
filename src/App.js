@@ -28,7 +28,6 @@ class App extends Component {
           <Route path='/fillUserInfo' component={FillUserInfo} />
           <Route path='/fillClaimInfo' component={FillClaimInfo} />
           <Route path='/claimStatus' component={ClaimStatus} />
-
         </Switch>
       </div>
     );

@@ -3,8 +3,7 @@ import { Input, Button, Container, Row, Col, Footer } from "mdbreact";
 
 class FillUserInfo extends Component {
   clickSubmit = () => {
-    // window.location = '/ListIdp'
-    // console.log('window.location',window.location);
+    this.props.history.push('/fillClaimInfo');
   };
   render() {
     return (
@@ -86,7 +85,7 @@ class FillUserInfo extends Component {
               />
             </div>
 
-            <Button block color="primary">
+            <Button block color="primary" onClick={this.clickSubmit}>
               ดำเนินการต่อ
             </Button>
           </form>

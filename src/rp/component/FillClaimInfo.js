@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router-dom'
-
+import * as moment from 'moment';
+import 'moment/min/locales.min';
 import { Input, Button, Container, Col, Fa } from "mdbreact";
 
 class FillClaimInfo extends Component {
@@ -12,8 +13,13 @@ class FillClaimInfo extends Component {
     }
   }
   clickSubmit = () => {
-    this.props.getInfo(this.state.insuranceNo, this.state.hospital);
-    this.props.history.push('/claimStatus');
+    if(this.state.insuranceNo !== 0 && this.state.hospital !== '') {
+      moment.locale('th')
+      const currentDateInClaim = moment().format('LL');
+      this.props.getInfo(this.state.insuranceNo, this.state.hospital, currentDateInClaim);
+      this.props.reqtoAs();
+      this.props.history.push('/claimStatus');
+    }
   };
   insuranceSelected = (event) => {
     this.setState({ insuranceNo: event.target.value })

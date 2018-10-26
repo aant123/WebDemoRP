@@ -8,7 +8,7 @@ class Login extends Component {
     this.props.history.push('/register');
   };
   clickSubmitLogin = () => {
-    this.props.history.push('/selectIdp');
+    // this.props.history.push('/selectIdp');
   };
   render() {
     return (
@@ -45,7 +45,9 @@ class Login extends Component {
                 validate
               />
             </div>
-            <Button block color="primary" onClick={this.clickSubmitLogin}>
+            <Button block color="primary" 
+            href='/selectIdp' 
+            onClick={this.clickSubmitLogin}>
               เข้าสู่ระบบ
               </Button>
           </form>

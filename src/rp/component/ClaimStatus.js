@@ -6,7 +6,7 @@ class ClaimStatus extends Component {
   clickSucess = () => {
   };
   render() {
-    const { insuranceNo, hospital } = this.props
+    const { insuranceNo, hospital, currentDateInClaim } = this.props
     const isSuccess = true;
     const success = isSuccess ? (
         <Col  style={{paddingTop:'10px'}}>
@@ -65,7 +65,7 @@ class ClaimStatus extends Component {
                 </CardTitle>
                 <CardTitle className="card-label">วันที่เข้ารักษา</CardTitle>
                 <CardTitle sub className="card-detail">
-                  12 ตุลาคม 2561
+                  {currentDateInClaim}
                 </CardTitle>
               </Col>
               <Col>
