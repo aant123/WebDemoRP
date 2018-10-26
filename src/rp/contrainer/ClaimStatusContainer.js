@@ -6,11 +6,7 @@ class ClaimStatusContainer extends Component {
   render() {
     const { insuranceNo, hospital } = this.props
     return (
-      <div>
       <ClaimStatus insuranceNo={insuranceNo} hospital={hospital}/>
-        {console.log(this.props.insuranceNo, this.props.hospital)}
-        {console.log(this.props)}
-        </div>
     )
   }
 }

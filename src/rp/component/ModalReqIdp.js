@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Container, Modal, Fa, ModalBody, Row, Col } from "mdbreact";
+import { Container, Modal, Fa, ModalBody, Row, Col, Button } from "mdbreact";
 
 class ModalReqIdp extends Component {
   componentWillMount() {
     let data = this.props.objIdpAtSelect
-     data = {...data,requestId:this.props.requestId}
+    data = { ...data, requestId: this.props.requestId }
     this.props.reqToIdp(data);
   }
   clickSucess = () => {
@@ -30,13 +30,16 @@ class ModalReqIdp extends Component {
       </div>
     ) : (
         <div>
-          <Row style={{ marginTop: '10px', marginBottom: '30px'}}>
+          <Row style={{ marginTop: '10px', marginBottom: '30px' }}>
             <label className="card-label" style={{ fontSize: '1.1rem', color: '#289123', fontWeight: 'bold' }}>
               {textDetailSucess}
             </label>
           </Row>
           <Row className="green-text" style={{ justifyContent: "center" }}>
-            <Fa icon="check-circle" size="4x" onClick={this.clickSucess} />
+            <Button color='primary'>
+              <Fa icon="check" className="mr-1" onClick={this.clickSucess} />
+              ดำเนินการต่อ
+            </Button>
           </Row>
         </div>
       );
@@ -45,7 +48,7 @@ class ModalReqIdp extends Component {
         <Modal isOpen={true} toggle={true} centered>
           <ModalBody style={{ marginTop: '10px', marginBottom: '10px', marginLeft: '10px', marginRight: '10px' }}>
             <Col>
-            <Row>
+              <Row>
                 <label className="card-label" style={{ fontSize: '1.5rem' }}>ยืนยันตัวตน</label>
               </Row>
               <Row>

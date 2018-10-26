@@ -38,11 +38,11 @@ class FillClaimInfo extends Component {
                   <Fa icon="sort-down" size='lg' />
                 </div>
                 <select
-                  className="form-control validate dropdown grey-text"
+                  className="form-control validate dropdown"
                   required onChange={this.insuranceSelected}
                 >
-                  <option value="">เลขที่กรมธรรม์</option>
-                  <option value="1">One</option>
+                  <option value="" disabled selected>เลขที่กรมธรรม์</option>
+                  <option value="000000J789-456">000000J789-456</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
                 </select>
@@ -56,8 +56,8 @@ class FillClaimInfo extends Component {
                   className="form-control validate dropdown"
                   required onChange={this.hospitalSelected}
                 >
-                  <option className='grey-text' value="">โรงพยาบาล</option>
-                  <option value="1">One</option>
+                  <option value="" disabled selected>โรงพยาบาล</option>
+                  <option value="โรงพยาบาลดุสิต">โรงพยาบาลดุสิต</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
                 </select>

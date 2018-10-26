@@ -1,14 +1,42 @@
 import React, { Component } from "react";
 
-import { Container, Row, Col, Card, CardBody, CardTitle, Fa } from "mdbreact";
+import { Container, Row, Col, Card, CardBody, CardTitle, Fa, Button } from "mdbreact";
 
 class ClaimStatus extends Component {
-  clickSubmit = () => {
-    // window.location = '/ListIdp'
-    // console.log('window.location',window.location);
+  clickSucess = () => {
   };
   render() {
     const { insuranceNo, hospital } = this.props
+    const isSuccess = true;
+    const success = isSuccess ? (
+        <Col  style={{paddingTop:'10px'}}>
+          <CardTitle className="card-label">สถานะ</CardTitle>
+          <CardTitle
+            sub
+            className="card-detail"
+            style={{ color: "#28B41E", fontWeight: "bold" }}
+          >
+            อนุมัติ
+            </CardTitle>
+          <Col className="text-center">
+            <Button color='primary'>
+              <Fa icon="check" className="mr-1" onClick={this.clickSucess} />
+              ดำเนินการต่อ
+            </Button>
+          </Col>
+        </Col>
+      ) : (
+        <Col style={{paddingTop:'10px',paddingBottom:'60px'}}>
+          <CardTitle className="card-label">สถานะ</CardTitle>
+          <CardTitle
+            sub
+            className="card-detail"
+            style={{ color: "#FF6E00", fontWeight: "bold" }}
+          >
+            กำลังตรวจสอบ
+              </CardTitle>
+        </Col>
+      )
     return (
       <Container>
         <Col style={{ paddingBottom: "20px" }}>
@@ -51,22 +79,7 @@ class ClaimStatus extends Component {
                 </CardTitle>
               </Col>
             </Row>
-            <CardTitle className="card-label">สถานะ</CardTitle>
-            <CardTitle
-              sub
-              className="card-detail"
-              style={{ color: "#FF6E00", fontWeight: "bold" }}
-            >
-              กำลังตรวจสอบ
-            </CardTitle>
-            <Col className="text-center">
-              <Fa
-                icon="check-circle"
-                size="5x"
-                style={{ color: "#28B41E" }}
-                onClick={this.clickSucess}
-              />
-            </Col>
+            {success}
           </CardBody>
         </Card>
       </Container>
