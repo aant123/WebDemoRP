@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import Header from './rp/component/Header'
-import { Col, Container } from "mdbreact";
+import { Col } from "mdbreact";
 import './App.css';
 
 import Login from './rp/component/Login'
@@ -16,11 +16,11 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Container>
-          <Col style={{ paddingTop: "30px" }}>
-            <p className="h2 text-left dark-blue">Fax Claim Service</p>
+        <div>
+          <Col style={{ paddingLeft: "30px", paddingTop: "30px"}}>
+            <h2 className="text-left dark-blue">Fax Claim Service</h2>
           </Col>
-        </Container>
+        </div>
         <Switch>
           <Route exact path='/' component={Login} />
           <Route path='/selectIdp' component={IdpList} />

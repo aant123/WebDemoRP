@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container, Modal, Fa, ModalBody, Row, Col, Button } from "mdbreact";
+import { withRouter } from 'react-router-dom';
 
 class ModalReqIdp extends Component {
   componentWillMount() {

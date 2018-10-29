@@ -1,15 +1,17 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom'
 
 import { Container, Row, Col, Card, CardBody, CardTitle, Fa, Button } from "mdbreact";
 
 class ClaimStatus extends Component {
   clickSucess = () => {
+    this.props.history.push('/');
   };
   render() {
     const { insuranceNo, hospital, currentDateInClaim } = this.props
     const isSuccess = true;
     const success = isSuccess ? (
-        <Col  style={{paddingTop:'10px'}}>
+        <Col style={{paddingTop:'10px'}}>
           <CardTitle className="card-label">สถานะ</CardTitle>
           <CardTitle
             sub
@@ -19,14 +21,14 @@ class ClaimStatus extends Component {
             อนุมัติ
             </CardTitle>
           <Col className="text-center">
-            <Button color='primary'>
-              <Fa icon="check" className="mr-1" onClick={this.clickSucess} />
+            <Button color='primary' onClick={this.clickSucess}>
+              <Fa icon="check" className="mr-1"/>
               ดำเนินการต่อ
             </Button>
           </Col>
         </Col>
       ) : (
-        <Col style={{paddingTop:'10px',paddingBottom:'60px'}}>
+        <Col style={{ paddingTop:'10px', paddingBottom:'60px' }}>
           <CardTitle className="card-label">สถานะ</CardTitle>
           <CardTitle
             sub
@@ -40,9 +42,9 @@ class ClaimStatus extends Component {
     return (
       <Container>
         <Col style={{ paddingBottom: "20px" }}>
-          <label className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
+          <h5 className="text-left grey-text" style={{ marginTop: "30px" }}>
             รายการคำขอเรียกร้องค่ารักษาผ่านโรงพยาบาล
-          </label>
+          </h5>
         </Col>
         <Card
           style={{
@@ -87,4 +89,4 @@ class ClaimStatus extends Component {
   }
 }
 
-export default ClaimStatus;
+export default withRouter(ClaimStatus);

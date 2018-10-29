@@ -11,9 +11,9 @@ class Register extends Component {
     return (
       <Container>
         <Col style={{ paddingBottom: "20px" }}>
-          <label className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
+          <h5 className="text-left grey-text" style={{ marginTop: "30px" }}>
             ลงทะเบียนผู้ใช้งาน
-          </label>
+          </h5>
         </Col>
         <Col style={{ paddingBottom: "30px" }}>
           <form>

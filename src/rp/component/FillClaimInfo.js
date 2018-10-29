@@ -31,9 +31,9 @@ class FillClaimInfo extends Component {
     return (
       <Container>
         <Col style={{ paddingBottom: "20px" }}>
-          <label className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
+          <h5 className="text-left grey-text" style={{ marginTop: "30px" }}>
             ข้อมูลของการรักษาพยาบาลในครั้งนี้
-          </label>
+          </h5>
         </Col>
         <Col style={{ paddingBottom: "30px" }}>
           <form>
@@ -79,7 +79,7 @@ class FillClaimInfo extends Component {
             </div>
             <Button block color="primary" onClick={this.clickSubmit}>
               ดำเนินการต่อ
-              </Button>
+            </Button>
           </form>
         </Col>
       </Container>

@@ -46,13 +46,13 @@ class ListIdp extends Component {
     return (
       <Container>
         <Col>
-          <label className="h6 text-left grey-text">
+          <h6 className="text-left grey-text">
             ลงทะเบียนเข้าใช้งาน > ยืนยันตัวตน
-          </label>
-          <label className="h5 text-left grey-text" 
+          </h6>
+          <h5 className="text-left grey-text" 
             style={{ marginTop: "30px" }}>
             เลือกผู้ให้บริการยืนยันตัวตน
-          </label>
+          </h5>
         </Col>
         <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           {idpList.length > 0 ? idpList.map((data, index) => {
@@ -69,7 +69,7 @@ class ListIdp extends Component {
                     </Col>
                     <Col xs="8">
                       <label style={{ transform:'translateY(50%)' }}>
-                        {data.node_id}
+                        {data.node_name}
                       </label>
                     </Col>
                     </Row>

@@ -14,9 +14,9 @@ class Login extends Component {
     return (
       <Container>
         <Col style={{ paddingBottom: "20px" }}>
-          <label className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
+          <h5 className="h5 text-left grey-text" style={{ marginTop: "30px"}}>
             ผู้ใช้งานใหม่ หรือยังไม่เคยลงทะเบียน online
-          </label>
+          </h5>
         </Col>
         <Col style={{ paddingBottom: "20px" }}>
           <Button block color="primary" onClick={this.clickSubmitRegister}>
@@ -26,7 +26,7 @@ class Login extends Component {
         <hr />
         <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
           <form>
-            <label className="h5 text-left grey-text">มี account อยู่แล้ว</label>
+            <h5 className="text-left grey-text">มี account อยู่แล้ว</h5>
             <div className="grey-text">
               <Input
                 label="ชื่อผู้ใช้งาน หรือ E-mail Address"
@@ -46,10 +46,10 @@ class Login extends Component {
               />
             </div>
             <Button block color="primary" 
-            href='/selectIdp' 
-            onClick={this.clickSubmitLogin}>
+              href='/selectIdp' 
+              onClick={this.clickSubmitLogin}>
               เข้าสู่ระบบ
-              </Button>
+            </Button>
           </form>
         </Col>
       </Container>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Button, Container, Row, Col, Footer } from "mdbreact";
+import { Input, Button, Container, Row, Col } from "mdbreact";
 
 class FillUserInfo extends Component {
   clickSubmit = () => {
@@ -9,9 +9,9 @@ class FillUserInfo extends Component {
     return (
       <Container>
         <Col>
-          <p className="h5 text-left grey-text" style={{ marginTop: "30px" }}>
+          <h5 className="text-left grey-text" style={{ marginTop: "30px" }}>
             ข้อมูลผู้ใช้
-          </p>
+          </h5>
         </Col>
         <Col style={{ paddingBottom: "30px" }}>
           <form>
