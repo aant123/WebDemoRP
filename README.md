@@ -1,5 +1,5 @@
 # WebDemoRP
-Step Run WebDeomoRP
+Step Run WebDemoRP
 - Run Docker Api-Master
 - Run Docker Example
 - Run Docker Smart-Contract
