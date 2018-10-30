@@ -5,7 +5,19 @@ import ModalReqIdp from '../component/ModalReqIdp'
 
 class ListIdpContrainer extends Component {
   render() {
-    const { idpList, getdata, selectIdp, showModalReqIdp, showLoading, reqToIdp, sucessModal, requestId, currentDate, objIdpAtSelect } = this.props
+    const { 
+      idpList, 
+      getdata, 
+      selectIdp, 
+      showModalReqIdp, 
+      showLoading, 
+      reqToIdp, 
+      sucessModal, 
+      requestId, 
+      currentDate, 
+      objIdpAtSelect, 
+      requestStatus 
+    } = this.props
     const modalReqIdp = showModalReqIdp ? (
       <ModalReqIdp
         showLoading={showLoading}
@@ -14,6 +26,7 @@ class ListIdpContrainer extends Component {
         requestId={requestId}
         currentDate={currentDate}
         objIdpAtSelect={objIdpAtSelect}
+        requestStatus={requestStatus}
       />
     ) : null
     return (
@@ -34,7 +47,8 @@ const mapStateToProps = state => ({
   showLoading: state.showLoading,
   requestId: state.requestId,
   currentDate: state.currentDate,
-  objIdpAtSelect: state.objIdpAtSelect
+  objIdpAtSelect: state.objIdpAtSelect,
+  requestStatus: state.requestStatus
 })
 
 const mapDispatchToProps = dispatch => ({

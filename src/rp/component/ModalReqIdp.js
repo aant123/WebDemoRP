@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Modal, Fa, ModalBody, Row, Col, Button } from "mdbreact";
 import { withRouter } from 'react-router-dom';
+import { requestStatus } from '../configCondition';
 
 class ModalReqIdp extends Component {
   componentWillMount() {
@@ -8,44 +9,71 @@ class ModalReqIdp extends Component {
     data = { ...data, requestId: this.props.requestId }
     this.props.reqToIdp(data);
   }
-  clickSucess = () => {
-    console.log('test')
+  
+  onClickSuccess = () => {
     this.props.history.push('/fillUserInfo');
     this.props.sucessModal(true);
   };
+  
+  onClickReject = () => {
+    this.props.history.push('/selectIdp');
+    this.props.sucessModal(true);
+  };
+
+  modalDetailRender = (status) => {
+    switch(status){
+      case requestStatus.ACCEPT:
+        return (
+          <div>
+            <Row style={{ marginTop: '10px', marginBottom: '30px' }}>
+              <label className="card-label" style={{ fontSize: '1.1rem', color: '#289123', fontWeight: 'bold' }}>
+                ระบบได้รับการยืนยันและข้อมูลจาก “ตัวตน Idp แล้ว”
+              </label>
+            </Row>
+            <Row style={{ justifyContent: "center" }}>
+              <Button color='primary' onClick={this.onClickSuccess}>
+                <Fa icon="check" className="mr-1"/>
+                ดำเนินการต่อ
+              </Button>
+            </Row>
+          </div>
+        )
+      case requestStatus.REJECT :
+        return (
+          <div>
+            <Row style={{ marginTop: '10px', marginBottom: '30px' }}>
+              <label className="card-label" style={{ fontSize: '1.1rem', color: '#ff0000', fontWeight: 'bold' }}>
+                คำร้องขอถูกปฎิเสธ
+              </label>
+            </Row>
+            <Row style={{ justifyContent: "center" }}>
+              <Button color='red' onClick={this.onClickReject}>
+                <Fa icon="close" className="mr-1"/>
+                ย้อนกลับ
+              </Button>
+            </Row>
+          </div>
+        )
+      default :
+        return null
+    }
+  }
+
   render() {
-    const { showLoading, requestId, currentDate } = this.props;
-    const textDetailSucess =
-      "ระบบได้รับการยืนยันและข้อมูลจาก \n “ตัวตน Idp แล้ว” ";
-    const textDetailWaiting =
-      "ระบบได้ทำการส่งคำร้องขอยืนยันตัวตนและการเข้าถึงข้อมูลไปที่ “ตัวตน Idp” แล้วกรุณาเปิด Appliction ของ “ตัวตน Idp” เพื่อทำการยืนยันคำร้อง";
-    const modalDetail = showLoading ? (
+    const { showLoading, requestId, currentDate, requestStatus } = this.props;
+    const modalDetail= showLoading ? (
       <div>
         <Row style={{ marginBottom: '30px', marginTop: '10px' }}>
           <label className="card-label" style={{ fontSize: '1rem' }}>
-            {textDetailWaiting}
+            "ระบบได้ทำการส่งคำร้องขอยืนยันตัวตนและการเข้าถึงข้อมูลไปที่ “ตัวตน Idp” แล้วกรุณาเปิด Appliction ของ “ตัวตน Idp” เพื่อทำการยืนยันคำร้อง"
           </label>
         </Row>
-        <Row className="blue-text" style={{ justifyContent: "center" }}>
+        <Row style={{ justifyContent: "center" }}>
           <Fa icon="spinner" pulse size="4x" fixed />
           <span className="sr-only">Loading...</span>
         </Row>
       </div>
-    ) : (
-        <div>
-          <Row style={{ marginTop: '10px', marginBottom: '30px' }}>
-            <label className="card-label" style={{ fontSize: '1.1rem', color: '#289123', fontWeight: 'bold' }}>
-              {textDetailSucess}
-            </label>
-          </Row>
-          <Row className="green-text" style={{ justifyContent: "center" }}>
-            <Button color='primary' onClick={this.clickSucess}>
-              <Fa icon="check" className="mr-1" />
-              ดำเนินการต่อ
-            </Button>
-          </Row>
-        </div>
-      );
+    ) : (this.modalDetailRender(requestStatus));
     return (
       <Container>
         <Modal isOpen={true} toggle={true} centered>
@@ -58,13 +86,13 @@ class ModalReqIdp extends Component {
                 <label className="card-label">Reference ID</label>
               </Row>
               <Row>
-                <label className="card-detail">{requestId}</label>
+                <label className="card-detail"> { requestId } </label>
               </Row>
               <Row>
                 <label className="card-label">Request Time</label>
               </Row>
               <Row>
-                <label className="card-detail">{currentDate}</label>
+                <label className="card-detail"> { currentDate } </label>
               </Row>
               {modalDetail}
             </Col>
