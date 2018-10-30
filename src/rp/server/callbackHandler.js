@@ -44,30 +44,28 @@ app.post('/rp/request/close', async (req, res) => {
 });
 
 function callbackEvent(data) {
-  console.log('hello',data)
+  let requestStatus = ''
     if (data.type === 'create_request_result') {
         // console.log('Create request result', data);   
     } else if (data.type === 'request_status') {
               if (data.mode === 1) {
                 if (data.status === 'completed') {
-                  console.log('complete')
-                    socket.emit('callBackSucess',data)
-                } else if (
-                  data.status === 'rejected' &&
-                  data.answered_idp_count === data.min_idp
-                ) {
-                  closeRequest(data.request_id);
+                    requestStatus = data.status
+                    socket.emit('callBack', requestStatus)
+                } else if (data.status === 'rejected') {
+                    socket.emit('callBack', requestStatus)
+                    closeRequest(data.request_id);
                 }
               }
     } else if (data.type === 'close_request_result') {
               if (data.success) {
-                // console.log('Successfully close request ID:', data.request_id);
+                console.log('Successfully close request ID:', data.request_id);
               } else {
-                // console.error('Error closeing request ID:', data.request_id);
+                console.error('Error closeing request ID:', data.request_id);
               }
     } else if (data.type === 'error') {
     } else {
-              // console.error('Unknown callback type', data);
+              console.error('Unknown callback type', data);
               return;
     }
     if (socket) {

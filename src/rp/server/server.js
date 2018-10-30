@@ -17,25 +17,17 @@ let socket;
 io.on("connection", _socket => {
     console.log("New client connected")
     socket = _socket
-    getIdpList(socket)
     socket.on("disconnect", () => console.log("Client disconnected"));
   });
 
-const getIdpList = async socket => {
-    try {
-      const res = await axios.get(`http://${config.ndidApiMasterIp}:${config.ndidApiMasterPort}/utility/idp`); 
-      socket.emit('GetIdpList', res.data);
-    } catch (error) {
-      console.error(`Error: ${error.code}`);
-    }
-  };
-
-// app.get('/listIdp',async (req,res) => {
-//   await axios.get(`http://${config.ndidApiMasterIp}:${config.ndidApiMasterPort}/utility/idp`)
-//       .then(resp => {
-//         socket.emit('GetIdpList', resp.data)
-//       })
-// })
+app.get('/listIdp',async (req,res) => {
+  try {
+    const res = await axios.get(`http://${config.ndidApiMasterIp}:${config.ndidApiMasterPort}/utility/idp`); 
+    socket.emit('GetIdpList', res.data);
+  } catch (error) {
+    console.error(`Error: ${error.code}`);
+  }
+})
 app.post('/createRequest', async (req, res) => {
     const {
       node_id,

@@ -9,6 +9,7 @@ class ModalReqIdp extends Component {
     this.props.reqToIdp(data);
   }
   clickSucess = () => {
+    console.log('test')
     this.props.history.push('/fillUserInfo');
     this.props.sucessModal(true);
   };
@@ -38,8 +39,8 @@ class ModalReqIdp extends Component {
             </label>
           </Row>
           <Row className="green-text" style={{ justifyContent: "center" }}>
-            <Button color='primary'>
-              <Fa icon="check" className="mr-1" onClick={this.clickSucess} />
+            <Button color='primary' onClick={this.clickSucess}>
+              <Fa icon="check" className="mr-1" />
               ดำเนินการต่อ
             </Button>
           </Row>

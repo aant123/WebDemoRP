@@ -1,28 +1,28 @@
 import * as config from './config'
 import socketIOClient from "socket.io-client";
 import axios from 'axios'
-const socket = socketIOClient('http://localhost:5000/');
-const socketCallBack = socketIOClient('http://localhost:5001/')
+const socket = socketIOClient(`http://${config.ndidServerIp}:${config.ndidServerPort}`);
+const socketCallBack = socketIOClient(`http://${config.ndidApiCallBackIpClient}:${config.ndidApiCallBackPort}`)
 
 const getData = () => {
-  // axios.get('http://localhost:5000/listIdp')
-  console.log('!!!!!!oh')
+  axios.get(`http://${config.ndidServerIp}:${config.ndidServerPort}/listIdp`)
  return new Promise((resolve, reject) => {
   socket.on('GetIdpList',idp => {
     resolve(idp)})
 })
 }
+
 const postRequest = (data) => {
-  axios.post('http://localhost:5000/createRequest',data)
+  axios.post(`http://${config.ndidServerIp}:${config.ndidServerPort}/createRequest`,data)
   return new Promise((resolve, reject) => {
-    socketCallBack.on('callBackSucess', data => {
-      resolve(data)
+    socketCallBack.on('callBack', requestStatus => {
+      resolve(requestStatus)
     })
 }
 )}
 
 const requestToAs = () => {
-  axios.post('http://localhost:5000/createRequestAs',{})
+  axios.post(`http://${config.ndidServerIp}:${config.ndidServerPort}/createRequestAs`,{})
   return new Promise((resolve, reject) => {
     socket.on('acceptFromAS', data => {
       resolve(data)
