@@ -36,7 +36,7 @@ class ListIdp extends Component {
       const requestId = uuidv4()
       moment.locale('th')
       const currentDate = moment().format('LLL');
-      this.props.selectIdp(this.state.selectIdp, booleanshowModalReqIdp,requestId,currentDate)
+      this.props.selectIdp(this.state.selectIdp, booleanshowModalReqIdp, requestId, currentDate)
     }
     this.props.history.push('#');
 

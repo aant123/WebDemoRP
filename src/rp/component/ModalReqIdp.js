@@ -22,7 +22,7 @@ class ModalReqIdp extends Component {
 
   modalDetailRender = (status) => {
     switch(status){
-      case requestStatus.ACCEPT:
+      case requestStatus.COMPLETED:
         return (
           <div>
             <Row style={{ marginTop: '10px', marginBottom: '30px' }}>
@@ -38,7 +38,7 @@ class ModalReqIdp extends Component {
             </Row>
           </div>
         )
-      case requestStatus.REJECT :
+      case requestStatus.REJECTED :
         return (
           <div>
             <Row style={{ marginTop: '10px', marginBottom: '30px' }}>
