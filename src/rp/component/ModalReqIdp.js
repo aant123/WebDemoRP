@@ -65,7 +65,7 @@ class ModalReqIdp extends Component {
       <div>
         <Row style={{ marginBottom: '30px', marginTop: '10px' }}>
           <label className="card-label" style={{ fontSize: '1rem' }}>
-            "ระบบได้ทำการส่งคำร้องขอยืนยันตัวตนและการเข้าถึงข้อมูลไปที่ “ตัวตน Idp” แล้วกรุณาเปิด Appliction ของ “ตัวตน Idp” เพื่อทำการยืนยันคำร้อง"
+            ระบบได้ทำการส่งคำร้องขอยืนยันตัวตนและการเข้าถึงข้อมูลไปที่ “ตัวตน Idp” แล้วกรุณาเปิด Appliction ของ “ตัวตน Idp” เพื่อทำการยืนยันคำร้อง
           </label>
         </Row>
         <Row style={{ justifyContent: "center" }}>
