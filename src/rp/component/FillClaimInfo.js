@@ -48,9 +48,9 @@ class FillClaimInfo extends Component {
                   required onChange={this.insuranceSelected}
                 >
                   <option value="" disabled selected>เลขที่กรมธรรม์</option>
+                  <option value="000000J789-123">000000J789-123</option>
                   <option value="000000J789-456">000000J789-456</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="000000J789-789">000000J789-789</option>
                 </select>
               </div>
               <div className="md-form form-group">
@@ -64,8 +64,8 @@ class FillClaimInfo extends Component {
                 >
                   <option value="" disabled selected>โรงพยาบาล</option>
                   <option value="โรงพยาบาลดุสิต">โรงพยาบาลดุสิต</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="โรงพยาบาล A">โรงพยาบาล A</option>
+                  <option value="โรงพยาบาล B">โรงพยาบาล B</option>
                 </select>
 
               </div>
