@@ -12,20 +12,20 @@ function* getListIdp() {
 }
 
 function* sendReqToIdp(action) {
-  console.log('action.idpDetail.requestId', action.idpDetail.requestId)
   try {
     yield put({ type: 'SHOW_LOADIND' })
-    const requestStatus = yield call(postRequest, {
-      node_id: '1',
+    const bodyParam = {
+      node_id: action.idpDetail.node_id,
       mode: 1,
       namespace: 'citizen_id',
       min_idp: 1,
-      identifier: 1234567890124,
+      identifier: 1234597890124,
       request_timeout: 86400,
-      idp_id_list: ['idp1'],
+      idp_id_list: [action.idpDetail.node_id],
       reference_id: action.idpDetail.requestId
-    })
-      yield put({ type: 'CREATE_REQUEST_CALLBACK' , requestStatus});
+    }
+    const requestStatus = yield call(postRequest,bodyParam)
+    yield put({ type: 'CREATE_REQUEST_CALLBACK' , requestStatus});
   } catch (e) {
     yield put({ type: 'CREATE_REQUEST_FAILD', message: e.message });
   }

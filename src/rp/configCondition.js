@@ -1,4 +1,4 @@
 export const requestStatus = {
-    REJECT:'rejected',
-    ACCEPTE:'completed'
+    REJECTED:'rejected',
+    COMPLETED:'completed'
 }

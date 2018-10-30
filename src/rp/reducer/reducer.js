@@ -1,7 +1,6 @@
 const reducer = (state={idpList:[],showModalReqIdp:false,showLoading: false,isSuccess: false},action) => {
     switch(action.type) {
         case 'GET_LIST_IDP_SUCCEEDED':
-        console.log('GET_LIST_IDP_SUCCEEDED')
             return {...state,idpList:action.idpList}
         case 'SELECT_IDP_FROM_LIST':
             return {...state,objIdpAtSelect:action.objIDP,showModalReqIdp:action.showModalReqIdp,requestId:action.requestId, currentDate: action.currentDate}

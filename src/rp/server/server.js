@@ -28,6 +28,7 @@ app.get('/listIdp',async (req,res) => {
     console.error(`Error: ${error.code}`);
   }
 })
+
 app.post('/createRequest', async (req, res) => {
     const {
       node_id,
@@ -64,8 +65,8 @@ app.post('/createRequest', async (req, res) => {
 
 
 app.post('/createRequestAs', async (req, res)=> {
-  setInterval(function(){
-     const isSuccess = true; 
+  setTimeout(function(){
+     const isSuccess = true;
      socket.emit('acceptFromAS',isSuccess)
   },10000)
 })

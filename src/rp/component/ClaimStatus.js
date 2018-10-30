@@ -8,8 +8,7 @@ class ClaimStatus extends Component {
     this.props.history.push('/');
   };
   render() {
-    const { insuranceNo, hospital, currentDateInClaim } = this.props
-    const isSuccess = true;
+    const { insuranceNo, hospital, currentDateInClaim, isSuccess } = this.props
     const success = isSuccess ? (
         <Col style={{paddingTop:'10px'}}>
           <CardTitle className="card-label">สถานะ</CardTitle>

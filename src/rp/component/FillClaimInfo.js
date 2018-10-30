@@ -64,8 +64,8 @@ class FillClaimInfo extends Component {
                 >
                   <option value="" disabled selected>โรงพยาบาล</option>
                   <option value="โรงพยาบาลดุสิต">โรงพยาบาลดุสิต</option>
-                  <option value="โรงพยาบาล A">โรงพยาบาล A</option>
-                  <option value="โรงพยาบาล B">โรงพยาบาล B</option>
+                  <option value="โรงพยาบาลเซนหลุยส์">โรงพยาบาลเซนหลุยส์</option>
+                  <option value="โรงพยาบาลเลิดสิน">โรงพยาบาลเลิดสิน</option>
                 </select>
 
               </div>
