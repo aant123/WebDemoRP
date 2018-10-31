@@ -15,7 +15,7 @@ class ModalReqIdp extends Component {
     this.props.sucessModal(true);
   };
   
-  onClickReject = () => {
+  onClickBack = () => {
     this.props.history.push('/selectIdp');
     this.props.sucessModal(true);
   };
@@ -47,7 +47,7 @@ class ModalReqIdp extends Component {
               </label>
             </Row>
             <Row style={{ justifyContent: "center" }}>
-              <Button color='red' onClick={this.onClickReject}>
+              <Button color='red' onClick={this.onClickBack}>
                 <Fa icon="close" className="mr-1"/>
                 ย้อนกลับ
               </Button>
@@ -57,7 +57,22 @@ class ModalReqIdp extends Component {
       case requestStatus.TIMEOUT :
         return (
           <div>
-            hello
+            <Row style={{ marginTop: '10px' }}>
+              <label className="card-label" style={{ fontSize: '1.5rem', color: '#ff0000', fontWeight: 'bold' }}>
+                ขออภัย
+              </label>
+            </Row>
+            <Row style={{ marginBottom: '30px' }}>
+              <label className="card-label" style={{ fontSize: '1.1rem', color: '#ff0000' }}>
+                คุณทำรายการเกินเวลาที่ระบบกำหนด
+              </label>
+            </Row>
+            <Row style={{ justifyContent: "center" }}>
+              <Button color='red' onClick={this.onClickBack}>
+                <Fa icon="close" className="mr-1"/>
+                ย้อนกลับ
+              </Button>
+            </Row>
           </div>
         )
       default :
@@ -74,7 +89,7 @@ class ModalReqIdp extends Component {
             ระบบได้ทำการส่งคำร้องขอยืนยันตัวตนและการเข้าถึงข้อมูลไปที่ “ตัวตน Idp” แล้วกรุณาเปิด Appliction ของ “ตัวตน Idp” เพื่อทำการยืนยันคำร้อง
           </label>
         </Row>
-        <Row style={{ justifyContent: "center" }}>
+        <Row className="blue-text" style={{ justifyContent: "center" }}>
           <Fa icon="spinner" pulse size="4x" fixed />
           <span className="sr-only">Loading...</span>
         </Row>
