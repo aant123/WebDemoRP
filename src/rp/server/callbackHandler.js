@@ -40,6 +40,11 @@ app.post('/rp/request/close', async (req, res) => {
 
 function callbackEvent(data) {
   let requestStatus = ''
+  if(data.timed_out) {
+    requestStatus = 'timeout'
+    socket.emit('requestStatus', requestStatus)
+  }
+  else{
     if (data.type === 'request_status') {
               if (data.mode === 1) {
                 if (data.status === 'completed') {
@@ -63,11 +68,7 @@ function callbackEvent(data) {
               console.error('Unknown callback type', data);
               return;
     }
-
-    if(data.timed_out) {
-      requestStatus = 'timeout'
-      socket.emit('requestStatus', requestStatus)
-    }
+  }
 }
 
 async function closeRequest(requestId) {
