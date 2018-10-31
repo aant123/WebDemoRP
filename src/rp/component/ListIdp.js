@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import uuidv4 from 'uuid-v4'
-import * as moment from 'moment';
+import moment from 'moment';
 import 'moment/min/locales.min';
 import { withRouter } from 'react-router-dom'
 
@@ -23,14 +23,12 @@ class ListIdp extends Component {
     }
   }
   componentWillMount() {
-    console.log('dfdfs',this.props)
     this.props.getdata()
   }
   selectIdp = (objIdp, index) => {
-    // objIdp= {...objIdp,id : uuidv4()}
     this.setState({ selectIdp: objIdp })
   }
-  clickBtnNextStep = () => {
+  onClickNext = () => {
     if (this.state.selectIdp !== null) {
       const booleanshowModalReqIdp = true
       const requestId = uuidv4()
@@ -39,54 +37,84 @@ class ListIdp extends Component {
       this.props.selectIdp(this.state.selectIdp, booleanshowModalReqIdp, requestId, currentDate)
     }
     this.props.history.push('#');
-
   }
-  render() {
+  onClickBack = () => {
+    this.props.history.push('/');
+  }
+
+  idpList = () => {
     const { idpList } = this.props
+    if (idpList.length > 0) {
+      return (
+        <div>
+          <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+            {idpList.map((data, index) => {
+              return (
+                <ListGroup role="tablist">
+                  <ListGroupItem onClick={() => this.selectIdp(data, index)} className='idpList' hover>
+                    <Row>
+                      <Col className='text-center' xs="4">
+                        <img
+                          src={this.state.icons[index]}
+                          alt="logo"
+                          height='50px'
+                        />
+                      </Col>
+                      <Col xs="8">
+                        <label style={{ transform: 'translateY(50%)' }}>
+                          {data.node_name}
+                        </label>
+                      </Col>
+                    </Row>
+                  </ListGroupItem>
+                  <br />
+                </ListGroup>
+              )
+            })}
+          </Col>
+          <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+            <Button block color="primary"
+              onClick={this.onClickNext}
+            >
+              ดำเนินการต่อ
+          </Button>
+          </Col>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+          <h5 className="text-center"
+            style={{ marginTop: "30px", color: '#ff0000'}}>
+            *** ไม่พบผู้ให้บริการยืนยันตัวตน ***
+          </h5>
+          </Col>
+          <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+            <Button block color="red"
+              onClick={this.onClickBack}
+            >
+            ย้อนกลับ
+          </Button>
+          </Col>
+        </div>
+      )
+    }
+  }
+
+  render() {
     return (
       <Container>
         <Col>
           <h6 className="text-left grey-text">
             ลงทะเบียนเข้าใช้งาน > ยืนยันตัวตน
           </h6>
-          <h5 className="text-left grey-text" 
+          <h5 className="text-left grey-text"
             style={{ marginTop: "30px" }}>
             เลือกผู้ให้บริการยืนยันตัวตน
           </h5>
         </Col>
-        <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
-          {idpList.length > 0 ? idpList.map((data, index) => {
-            return (
-              <ListGroup role="tablist">
-                  <ListGroupItem onClick={() => this.selectIdp(data, index)} className='idpList' hover>
-                  <Row>
-                    <Col className='text-center' xs="4">
-                      <img
-                        src={this.state.icons[index]}
-                        alt="logo"
-                        height='50px'
-                      />
-                    </Col>
-                    <Col xs="8">
-                      <label style={{ transform:'translateY(50%)' }}>
-                        {data.node_name}
-                      </label>
-                    </Col>
-                    </Row>
-                  </ListGroupItem>
-                  <br/>
-              </ListGroup>
-            )
-          }) : null }
-
-        </Col>
-        <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
-          <Button block color="primary" 
-          onClick={this.clickBtnNextStep}
-          >
-            ดำเนินการต่อ
-          </Button>
-        </Col>
+        {this.idpList()}
       </Container>
 
     )
