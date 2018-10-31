@@ -18,7 +18,7 @@ class App extends Component {
         <Header />
         <div>
           <Col style={{ paddingLeft: "30px", paddingTop: "30px"}}>
-            <h2 className="text-left dark-blue">Fax Claim Service</h2>
+            <h2 className="text-left" style={{ color: '#2F4A62' }}>Fax Claim Service</h2>
           </Col>
         </div>
         <Switch>

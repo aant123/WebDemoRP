@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import { Container, ListGroup, ListGroupItem, Button, Col, Row } from 'mdbreact'
+import { Container, ListGroup, ListGroupItem, Button, Col, Row, Fa  } from 'mdbreact'
 
 import icon1 from "../../icon/Layer 1.png";
 import icon2 from "../../icon/Group 22.png";
@@ -44,6 +44,18 @@ class ListIdp extends Component {
 
   idpList = () => {
     const { idpList, showLoadingIdpList } = this.props
+    if (showLoadingIdpList) {
+      return (
+        <div>
+          <Col className="blue-text text-center" style={{ justifyContent: "center", paddingTop: "20px", paddingBottom: "20px" }}>
+          <h5 style={{ marginTop: "30px", marginBottom: '50px', fontSize: '1.5rem' }}>
+            ... Loading ...
+          </h5>
+          <Fa icon="spinner" pulse size="5x" fixed />
+          </Col>
+        </div>
+      )
+    }
     if (idpList.length > 0) {
       return (
         <div>
