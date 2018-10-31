@@ -44,11 +44,13 @@ function callbackEvent(data) {
               if (data.mode === 1) {
                 if (data.status === 'completed') {
                     requestStatus = data.status
-                    socket.emit('callBack', requestStatus)
+                    socket.emit('requestStatus', requestStatus)
+                    closeRequest(data.request_id)
                 } else if (data.status === 'rejected') {
                     requestStatus = data.status
-                    socket.emit('callBack', requestStatus)
-                    closeRequest(data.request_id);
+                    socket.emit('requestStatus', requestStatus)
+                    closeRequest(data.request_id)
+                    // timed_out
                 }
               }
     } else if (data.type === 'close_request_result') {
@@ -62,6 +64,12 @@ function callbackEvent(data) {
               console.error('Unknown callback type', data);
               return;
     }
+
+    if(data.timed_out) {
+      console.log('timeout')
+      requestStatus = 'timeout'
+      socket.emit('requestStatus', requestStatus)
+    }
 }
 
 async function closeRequest(requestId) {
@@ -72,7 +80,7 @@ async function closeRequest(requestId) {
         request_id: requestId,
       })
       return req;
-  }
+}
 
 server.listen(config.ndidApiCallBackPort, () =>
   console.log(

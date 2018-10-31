@@ -54,6 +54,12 @@ class ModalReqIdp extends Component {
             </Row>
           </div>
         )
+      case requestStatus.TIMEOUT :
+        return (
+          <div>
+            hello
+          </div>
+        )
       default :
         return null
     }
