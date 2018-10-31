@@ -15,7 +15,7 @@ const getData = () => {
 const postRequest = (data) => {
   axios.post(`http://${config.ndidServerIp}:${config.ndidServerPort}/createRequest`,data)
   return new Promise((resolve, reject) => {
-    socketCallBack.on('callBack', requestStatus => {
+    socketCallBack.on('requestStatus', requestStatus => {
       resolve(requestStatus)
     })
 }
