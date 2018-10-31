@@ -20,7 +20,6 @@ function* sendReqToIdp(action) {
       namespace: 'citizen_id',
       min_idp: 1,
       identifier: 1234597890124,
-      request_timeout: 86400,
       idp_id_list: [action.idpDetail.node_id],
       reference_id: action.idpDetail.requestId
     }

@@ -50,7 +50,6 @@ function callbackEvent(data) {
                     requestStatus = data.status
                     socket.emit('requestStatus', requestStatus)
                     closeRequest(data.request_id)
-                    // timed_out
                 }
               }
     } else if (data.type === 'close_request_result') {
@@ -66,7 +65,6 @@ function callbackEvent(data) {
     }
 
     if(data.timed_out) {
-      console.log('timeout')
       requestStatus = 'timeout'
       socket.emit('requestStatus', requestStatus)
     }

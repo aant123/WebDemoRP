@@ -36,7 +36,6 @@ app.post('/createRequest', async (req, res) => {
       namespace,
       min_idp,
       identifier,
-      request_timeout,
       idp_id_list,
       reference_id
     } = req.body;
@@ -55,7 +54,7 @@ app.post('/createRequest', async (req, res) => {
         request_message: '',
         min_ial: 1.1,
         min_aal: 1,
-        request_timeout: request_timeout ? parseInt(request_timeout) : 86400,
+        request_timeout: config.timeout,
       });
       req.status(200).json({requestId: request.data.reference_id});
     } catch (error) {
