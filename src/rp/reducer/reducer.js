@@ -1,7 +1,9 @@
-const reducer = (state={idpList:[],showModalReqIdp:false,showLoading: false,isSuccess: false},action) => {
+const reducer = (state={idpList:[],showModalReqIdp:false,showLoading: false,isSuccess: false,showLoadingIdpList:false},action) => {
     switch(action.type) {
+        case 'SHOW_LOADING_GET_LIST_IDP' :
+            return {...state,showLoadingIdpList:true}
         case 'GET_LIST_IDP_SUCCEEDED':
-            return {...state,idpList:action.idpList}
+            return {...state,idpList:action.idpList,showLoadingIdpList:false}
         case 'SELECT_IDP_FROM_LIST':
             return {...state,objIdpAtSelect:action.objIDP,showModalReqIdp:action.showModalReqIdp,requestId:action.requestId, currentDate: action.currentDate}
         case 'SHOW_LOADIND':

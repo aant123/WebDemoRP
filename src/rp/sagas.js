@@ -3,7 +3,8 @@ import { getData, postRequest, requestToAs } from '../rp/service'
 // import {requestStatus} from './configCondition'
 
 function* getListIdp() {
-  try {                                                
+  try { 
+    yield put({ type: "SHOW_LOADING_GET_LIST_IDP"});                                               
     const idpList = yield call(getData)
     yield put({ type: "GET_LIST_IDP_SUCCEEDED", idpList });
   } catch (e) {

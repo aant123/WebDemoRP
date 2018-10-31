@@ -43,7 +43,7 @@ class ListIdp extends Component {
   }
 
   idpList = () => {
-    const { idpList } = this.props
+    const { idpList, showLoadingIdpList } = this.props
     if (idpList.length > 0) {
       return (
         <div>

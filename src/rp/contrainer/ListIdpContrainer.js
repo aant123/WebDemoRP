@@ -16,7 +16,8 @@ class ListIdpContrainer extends Component {
       requestId, 
       currentDate, 
       objIdpAtSelect, 
-      requestStatus 
+      requestStatus,
+      showLoadingIdpList 
     } = this.props
     const modalReqIdp = showModalReqIdp ? (
       <ModalReqIdp
@@ -34,7 +35,8 @@ class ListIdpContrainer extends Component {
         <ListIdp
           idpList={idpList}
           getdata={getdata}
-          selectIdp={selectIdp} />
+          selectIdp={selectIdp} 
+          showLoadingIdpList={showLoadingIdpList}/>
         {modalReqIdp}
       {console.log(this.props)}
       </div>
@@ -48,7 +50,8 @@ const mapStateToProps = state => ({
   requestId: state.requestId,
   currentDate: state.currentDate,
   objIdpAtSelect: state.objIdpAtSelect,
-  requestStatus: state.requestStatus
+  requestStatus: state.requestStatus,
+  showLoadingIdpList: state.showLoadingIdpList
 })
 
 const mapDispatchToProps = dispatch => ({
