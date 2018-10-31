@@ -1,4 +1,5 @@
 export const requestStatus = {
     REJECTED:'rejected',
-    COMPLETED:'completed'
+    COMPLETED:'completed',
+    TIMEOUT: 'timeout'
 }
