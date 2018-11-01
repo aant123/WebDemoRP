@@ -2,13 +2,13 @@ import React, { Component } from "react";
 
 import { Button, Container, Col } from "mdbreact";
 import FillLogin from '../component/FillLogin';
-import FillRegister from '../component/FillRegister';
+import Register from '../component/Register';
 
 class LoginContainer extends Component {
   render() {
     return (
       <Container>
-        <FillRegister />
+        <Register />
         <hr />
         <FillLogin />
       </Container>

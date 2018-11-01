@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 import { Button, Col } from "mdbreact";
 
-class Login extends Component {
+class Register extends Component {
   
   clickSubmitRegister = () => {
     this.props.history.push('/register');
@@ -27,4 +27,4 @@ class Login extends Component {
   }
 }
 
-export default withRouter(Login);
+export default withRouter(Register);

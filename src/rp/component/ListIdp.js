@@ -47,7 +47,7 @@ class ListIdp extends Component {
     if (showLoadingIdpList) {
       return (
         <div>
-          <Col className="blue-text text-center" style={{ justifyContent: "center", paddingTop: "20px", paddingBottom: "20px" }}>
+          <Col className="text-center" style={{ color: '#3BBBFF', justifyContent: "center", paddingTop: "20px", paddingBottom: "20px" }}>
           <h5 style={{ marginTop: "30px", marginBottom: '50px', fontSize: '1.5rem' }}>
             ... Loading ...
           </h5>
