@@ -7,16 +7,21 @@ class FillRegister extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: ''
+      citizenId: '',
+      email: ''
     }
   }
 
   clickSubmit = () => {
-    this.props.getId(this.state.id)
+    this.props.getId(this.state.citizenId)
+    this.props.getEmail(this.state.email)
     this.props.history.push('/');
   };
-  enterId = (event) => {
-    this.setState({ id: event.target.value })
+  onChangeId = (event) => {
+    this.setState({ citizenId: event.target.value })
+  }
+  onChangeEmail = (event) => {
+    this.setState({ email: event.target.value })
   }
   render() {
     return (
@@ -34,14 +39,16 @@ class FillRegister extends Component {
                 icon="user"
                 type="number"
                 validate
-                value={this.state.id}
-                onChange={this.enterId}
+                value={this.state.citizenId}
+                onChange={this.onChangeId}
               />
               <Input
                 label="E-mail Address"
                 icon="envelope"
                 type="email"
                 validate
+                value={this.state.email}
+                onChange={this.onChangeEmail}
               />
               <div className="md-form form-group">
                 <Fa icon="lock" className="prefix" />
