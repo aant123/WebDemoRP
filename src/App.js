@@ -4,8 +4,8 @@ import Header from './rp/component/Header'
 import { Col } from "mdbreact";
 import './App.css';
 
-import Login from './rp/component/Login'
-import Register from './rp/component/Register'
+import Login from './rp/contrainer/LoginContainer'
+import Register from './rp/contrainer/RegisterContainer'
 import ClaimStatus from './rp/contrainer/ClaimStatusContainer'
 import FillUserInfo from './rp/component/FillUserInfo'
 import IdpList from './rp/contrainer/ListIdpContrainer'
