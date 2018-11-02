@@ -7,7 +7,7 @@ class ModalReqIdp extends Component {
   componentWillMount() {
     let data = this.props.objIdpAtSelect
     data = { ...data, requestId: this.props.requestId }
-    this.props.reqToIdp(data);
+    this.props.reqToIdp(data,this.props.citizenID);
   }
   
   onClickSuccess = () => {

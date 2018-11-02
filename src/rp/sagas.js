@@ -20,7 +20,7 @@ function* sendReqToIdp(action) {
       mode: 1,
       namespace: 'citizen_id',
       min_idp: 1,
-      identifier: 1234597890124,
+      identifier: action.citizenID,
       idp_id_list: [action.idpDetail.node_id],
       reference_id: action.idpDetail.requestId
     }

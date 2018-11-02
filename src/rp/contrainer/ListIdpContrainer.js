@@ -17,7 +17,8 @@ class ListIdpContrainer extends Component {
       currentDate, 
       objIdpAtSelect, 
       requestStatus,
-      showLoadingIdpList 
+      showLoadingIdpList,
+      citizenID 
     } = this.props
     const modalReqIdp = showModalReqIdp ? (
       <ModalReqIdp
@@ -28,6 +29,7 @@ class ListIdpContrainer extends Component {
         currentDate={currentDate}
         objIdpAtSelect={objIdpAtSelect}
         requestStatus={requestStatus}
+        citizenID={citizenID}
       />
     ) : null
     return (
@@ -36,7 +38,8 @@ class ListIdpContrainer extends Component {
           idpList={idpList}
           getdata={getdata}
           selectIdp={selectIdp} 
-          showLoadingIdpList={showLoadingIdpList}/>
+          showLoadingIdpList={showLoadingIdpList}
+          />
         {modalReqIdp}
       {console.log(this.props)}
       </div>
@@ -51,13 +54,14 @@ const mapStateToProps = state => ({
   currentDate: state.currentDate,
   objIdpAtSelect: state.objIdpAtSelect,
   requestStatus: state.requestStatus,
-  showLoadingIdpList: state.showLoadingIdpList
+  showLoadingIdpList: state.showLoadingIdpList,
+  citizenID : state.citizenID
 })
 
 const mapDispatchToProps = dispatch => ({
   getdata: () => dispatch({ type: 'GET_LIST_IDP_REQUESTED' }),
   selectIdp: (objIDP, showModalReqIdp, requestId, currentDate) => dispatch({ type: 'SELECT_IDP_FROM_LIST', objIDP, showModalReqIdp, requestId, currentDate }),
-  reqToIdp: idpDetail => dispatch({ type: 'REQUEST_TO_IDP', idpDetail }),
+  reqToIdp: (idpDetail, citizenID) => dispatch({ type: 'REQUEST_TO_IDP', idpDetail, citizenID }),
   sucessModal: closeModalReqIdp => dispatch({ type: 'SUCESS_MODAL_REQUEST_IDP', closeModalReqIdp })
 })
 
