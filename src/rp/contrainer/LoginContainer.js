@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Button, Container, Col } from "mdbreact";
+import { Container} from "mdbreact";
 import FillLogin from '../component/FillLogin';
 import Register from '../component/Register';
 

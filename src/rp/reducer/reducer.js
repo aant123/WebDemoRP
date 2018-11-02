@@ -16,6 +16,8 @@ const reducer = (state = { idpList: [], showModalReqIdp: false, showLoading: fal
       return { ...state, insuranceNo: action.insuranceNo, hospital: action.hospital, currentDateInClaim: action.currentDateInClaim }
     case 'GET_CITIZEN_ID':
       return { ...state, citizenId: action.citizenId }
+    case 'GET_EMAIL':
+      return { ...state, email: action.email }
     case 'AS_ACCEPT_SUCCESS':
       return { ...state, isSuccess: true }
     default:

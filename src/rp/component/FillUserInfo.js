@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Input, Button, Container, Row, Col } from "mdbreact";
+import { withRouter } from 'react-router-dom'
 
 class FillUserInfo extends Component {
   clickSubmit = () => {
     this.props.history.push('/fillClaimInfo');
   };
   render() {
+    const{ citizenId, email } = this.props;
     return (
       <Container>
         <Col>
@@ -21,19 +23,13 @@ class FillUserInfo extends Component {
                   <Input
                     label="ชื่อ"
                     icon="user"
-                    group
                     type="text"
-                    error="wrong"
-                    success="right"
                   />
                 </Col>
                 <Col>
                   <Input
                     label="นามสกุล"
-                    group
                     type="text"
-                    error="wrong"
-                    success="right"
                   />
                 </Col>
               </Row>
@@ -41,47 +37,34 @@ class FillUserInfo extends Component {
               <Input
                 label="เลขที่บัตรประชาชน"
                 icon="id-card"
-                group
                 type="text"
                 validate
-                error="wrong"
-                success="right"
+                value={citizenId}
               />
               <Input
                 label="วันที่"
                 icon="calendar"
-                group
                 type="text"
                 validate
-                error="wrong"
-                success="right"
               />
               <Input
                 label="ที่อยู่"
                 icon="map-marker"
-                group
                 type="text"
                 validate
-                error="wrong"
-                success="right"
               />
               <Input
                 label="เบอร์โทรศัพท์"
                 icon="phone"
-                group
                 type="text"
                 validate
-                error="wrong"
-                success="right"
               />
               <Input
                 label="E-mail Address"
                 icon="envelope"
-                group
                 type="email"
                 validate
-                error="wrong"
-                success="right"
+                value={email}
               />
             </div>
 
@@ -95,4 +78,4 @@ class FillUserInfo extends Component {
   }
 }
 
-export default FillUserInfo;
+export default withRouter(FillUserInfo);
