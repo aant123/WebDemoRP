@@ -62,6 +62,7 @@ class FillUserInfo extends Component {
                 icon="phone"
                 type="text"
                 validate
+                value={'0123456789'}
               />
               <Input
                 label="E-mail Address"

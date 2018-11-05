@@ -4,13 +4,14 @@ import ClaimStatus from '../component/ClaimStatus';
 
 class ClaimStatusContainer extends Component {
   render() {
-    const { insuranceNo, hospital, currentDateInClaim, isSuccess } = this.props
+    const { insuranceNo, hospital, currentDateInClaim, isSuccess, isRegister } = this.props
     return (
       <ClaimStatus
         insuranceNo={insuranceNo}
         hospital={hospital}
         currentDateInClaim = {currentDateInClaim}
         isSuccess = {isSuccess}
+        isRegister={isRegister}
       />
     )
   }
@@ -23,4 +24,8 @@ const mapStateToProps = state => ({
   isSuccess: state.isSuccess
 })
 
-export default connect(mapStateToProps)(ClaimStatusContainer);
+const mapDispatchToProps = dispatch => ({
+  isRegister: (isRegis) => dispatch({ type: 'IS_REGISTER', isRegis})
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClaimStatusContainer);
