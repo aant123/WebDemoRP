@@ -5,6 +5,7 @@ import { Container, Row, Col, Card, CardBody, CardTitle, Fa, Button } from "mdbr
 
 class ClaimStatus extends Component {
   clickSucess = () => {
+    this.props.isRegister(false);
     this.props.history.push('/');
   };
   render() {
