@@ -6,7 +6,6 @@
     "axios": "^0.18.0",
     "babel-loader": "^8.0.4",
     "body-parser": "^1.18.3",
-    "cors": "^2.8.4",
     "dateformat": "^3.0.3",
     "express": "^4.16.4",
     "mdbreact": "^4.8.1",

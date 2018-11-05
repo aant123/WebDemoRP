@@ -28,6 +28,16 @@ class ListIdp extends Component {
   selectIdp = (objIdp, index) => {
     this.setState({ selectIdp: objIdp })
   }
+  mapNameIdp = (idIdp) => {
+    switch(idIdp) {
+        case 'idp1':
+            return 'ตัวตน IDP';
+        case 'idp2':
+            return 'IDP 2';
+        default:
+            return '';
+    }
+}
   onClickNext = () => {
     if (this.state.selectIdp !== null) {
       const booleanshowModalReqIdp = true
@@ -61,6 +71,7 @@ class ListIdp extends Component {
         <div>
           <Col style={{ paddingTop: "20px", paddingBottom: "20px" }}>
             {idpList.map((data, index) => {
+              const nameIDP = this.mapNameIdp(data.node_id);
               return (
                 <ListGroup role="tablist">
                   <ListGroupItem onClick={() => this.selectIdp(data, index)} className='idpList' hover>
@@ -74,7 +85,7 @@ class ListIdp extends Component {
                       </Col>
                       <Col xs="8">
                         <label style={{ transform: 'translateY(50%)' }}>
-                          {data.node_name}
+                          {nameIDP}
                         </label>
                       </Col>
                     </Row>

@@ -3,7 +3,6 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const http = require('http')
 const socketIo = require('socket.io')
-const cors = require('cors')
 const axios = require('axios')
 const app = express();
 const server = http.createServer(app);
@@ -12,7 +11,6 @@ const path = require('path');
 
 app.use(bodyParser.urlencoded({ extended: false, limit: '2mb' }));
 app.use(bodyParser.json({ limit: '2mb' }));
-app.use(cors());
 let socket;
 
 app.use(express.static(path.resolve('../../../', 'build')));
@@ -69,14 +67,14 @@ app.post('/createRequest', async (req, res) => {
   });
 
 
-app.post('/createRequestAs', async (req, res)=> {
+app.post('/createRequestAs', (req, res)=> {
   setTimeout(function(){
      const isSuccess = true;
      socket.emit('acceptFromAS',isSuccess)
   },10000)
 })
 
-app.post('/rp/request/:referenceId', async (req, res) => {
+app.post('/rp/request/:referenceId',(req, res) => {
   try {
     const callbackData = req.body;
     callbackEvent(callbackData); 
@@ -86,7 +84,7 @@ app.post('/rp/request/:referenceId', async (req, res) => {
   }
 });
 
-app.post('/rp/request/close', async (req, res) => {
+app.post('/rp/request/close', (req, res) => {
   try {
     const callbackData = req.body;
     callbackEvent(callbackData);

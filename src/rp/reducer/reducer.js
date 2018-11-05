@@ -20,6 +20,8 @@ const reducer = (state = { idpList: [], showModalReqIdp: false, showLoading: fal
       return { ...state, email: action.email }
     case 'AS_ACCEPT_SUCCESS':
       return { ...state, isSuccess: true }
+    case 'MOCK_TEST_GETIDP':
+      return { ...state,idpList: action.idpList, showLoadingIdpList: false }
     default:
       return state
   }

@@ -14,16 +14,18 @@ function* getListIdp() {
 
 function* sendReqToIdp(action) {
   try {
+    console.log('action',action)
     yield put({ type: 'SHOW_LOADIND' })
     const bodyParam = {
       node_id: action.idpDetail.node_id,
       mode: 1,
       namespace: 'citizen_id',
       min_idp: 1,
-      identifier: action.citizenID,
+      identifier: action.citizenId,
       idp_id_list: [action.idpDetail.node_id],
       reference_id: action.idpDetail.requestId
     }
+    console.log('bodyParam',bodyParam)
     const requestStatus = yield call(postRequest,bodyParam)
     yield put({ type: 'CREATE_REQUEST_CALLBACK' , requestStatus});
   } catch (e) {
