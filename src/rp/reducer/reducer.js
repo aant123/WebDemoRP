@@ -18,6 +18,8 @@ const reducer = (state = { idpList: [], showModalReqIdp: false, showLoading: fal
       return { ...state, citizenId: action.citizenId }
     case 'GET_EMAIL':
       return { ...state, email: action.email }
+    case 'IS_REGISTER':
+      return { ...state, isRegis: action.isRegis}
     case 'AS_ACCEPT_SUCCESS':
       return { ...state, isSuccess: true }
     case 'MOCK_TEST_GETIDP':

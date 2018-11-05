@@ -24,12 +24,14 @@ class FillUserInfo extends Component {
                     label="ชื่อ"
                     icon="user"
                     type="text"
+                    value={'วิจิตตรา'}
                   />
                 </Col>
                 <Col>
                   <Input
                     label="นามสกุล"
                     type="text"
+                    value={'โค'}
                   />
                 </Col>
               </Row>
@@ -42,16 +44,18 @@ class FillUserInfo extends Component {
                 value={citizenId}
               />
               <Input
-                label="วันที่"
+                label="วันเกิด"
                 icon="calendar"
                 type="text"
                 validate
+                value={'2/12/95'}
               />
               <Input
                 label="ที่อยู่"
                 icon="map-marker"
                 type="text"
                 validate
+                value={'123/456'}
               />
               <Input
                 label="เบอร์โทรศัพท์"

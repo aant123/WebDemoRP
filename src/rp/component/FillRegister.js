@@ -15,6 +15,7 @@ class FillRegister extends Component {
   clickSubmit = () => {
     this.props.getId(this.state.citizenId)
     this.props.getEmail(this.state.email)
+    this.props.isRegister(true)
     this.props.history.push('/');
   };
   onChangeId = (event) => {
@@ -56,13 +57,12 @@ class FillRegister extends Component {
                   <Fa icon="sort-down" size='lg' />
                 </div>
                 <select
-                  className="form-control validate dropdown grey-text"
+                  className="form-control validate dropdown"
                   required
                 >
-                  <option value="">เลือกวิธียืนยันตัวตน</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="" disabled selected>เลือกวิธียืนยันตัวตน</option>
+                  <option value="1">NDID</option>
+                  <option value="2">SMS OTP</option>
                 </select>
               </div>
             </div>

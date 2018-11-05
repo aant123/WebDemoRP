@@ -4,9 +4,22 @@ import { withRouter } from "react-router-dom";
 import { Input, Button, Col } from "mdbreact";
 
 class FillLogin extends Component {
-  clickSubmitLogin = () => {
+  constructor(props){
+    super(props)
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+  onClickSubmitLogin = () => {
     this.props.history.push("/selectIdp");
   };
+
+  componentDidMount = () => {
+    if(this.props.isRegis){
+      this.setState({ email: this.props.email, password: '000000'})
+    }
+  }
 
   render() {
     return (
@@ -20,18 +33,20 @@ class FillLogin extends Component {
               icon="user"
               type="email"
               validate
+              value={this.state.email}
             />
             <Input 
               label="รหัสผ่าน" 
               icon="lock" 
               type="password" 
-              validate 
-            />
+              validate
+              value={this.state.password}
+            />  
             </div>
             <Button 
               block 
               color="primary" 
-              onClick={this.clickSubmitLogin}
+              onClick={this.onClickSubmitLogin}
             >
               เข้าสู่ระบบ
             </Button>

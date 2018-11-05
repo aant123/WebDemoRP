@@ -89,7 +89,7 @@ class ModalReqIdp extends Component {
             ระบบได้ทำการส่งคำร้องขอยืนยันตัวตนและการเข้าถึงข้อมูลไปที่ “ตัวตน Idp” แล้วกรุณาเปิด Appliction ของ “ตัวตน Idp” เพื่อทำการยืนยันคำร้อง
           </label>
         </Row>
-        <Row className="blue-text" style={{ justifyContent: "center" }}>
+        <Row style={{ color: '#3BBBFF', justifyContent: "center" }}>
           <Fa icon="spinner" pulse size="4x" fixed />
           <span className="sr-only">Loading...</span>
         </Row>
